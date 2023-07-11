@@ -81,7 +81,7 @@ router.patch('/:numberPlate', async (req, res)=>{
     }
 })
 
-// delete: Delete data usind deleteOne()
+// delete: Delete data usind deleteMany() --> to delete all duplicate values!
 // url syntax: ../users/numberPlate
 
 router.delete('/:numberPlate', async (req, res) => {
