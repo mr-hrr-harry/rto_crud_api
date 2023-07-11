@@ -22,8 +22,8 @@ router.get('/:numberPlate', async (req, res)=>{
     try{
         const data = await format.findOne({numberPlate: req.params.numberPlate})
         if(data == null){
-            res.send("No such Vehicle exists!")
-            console.log("No such Vehicle exists!")
+            console.log("No such Vehicle Data exists!")
+            res.send("No such Vehicle Data exists!")
         }
         else{
             res.json(data)
@@ -69,7 +69,8 @@ router.patch('/:numberPlate', async (req, res)=>{
     try{
         const statusData = await format.findOneAndUpdate({numberPlate: req.params.numberPlate}, req.body, {new: true})
         if(!statusData){
-            res.send("No such Vehicle exists!")
+            console.log("No such Vehicle Data exists!")
+            res.send("No such Vehicle Data exists!")
         }
         else{
             res.json(statusData)
@@ -81,6 +82,24 @@ router.patch('/:numberPlate', async (req, res)=>{
 })
 
 // delete: Delete data usind deleteOne()
-// url syntax: ../users/
+// url syntax: ../users/numberPlate
+
+router.delete('/:numberPlate', async (req, res) => {
+    try{
+        const data = await format.findOne({numberPlate: req.params.numberPlate})
+        if(data != null){
+            await format.deleteMany({numberPlate: req.params.numberPlate})
+            console.log("Data deleted Successfully!")
+            res.send("Data deleted Successfully!")
+        }
+        else{
+            console.log("No such Vehicle Data exists!")
+            res.send("No such Vehicle Data exists!")
+        }
+    }
+    catch(err){
+        console.log("Error: " + err);
+    } 
+})
 
 module.exports = router
