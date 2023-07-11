@@ -1,2 +1,6 @@
 # crud_api
-This is simple crud rest api developed using Node || Express || MongoDB
+About
+
+    This is simple crud rest api to demonstrate the idea of RTO vehicle management
+    
+    This is developed using Node || Express || MongoDB
