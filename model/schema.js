@@ -19,4 +19,4 @@ const Schema = new mongoose.Schema({
     }
 })
 
-modules.export = mongoose.model('RTO data', Schema)
+module.exports = mongoose.model('RTO Vehicles data', Schema)

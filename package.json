@@ -4,7 +4,8 @@
   "description": "This is an api to recall my nodejs skills",
   "main": "server.js",
   "scripts": {
-    "start": "server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "M A Harish J",
   "license": "MIT",
