@@ -4,7 +4,7 @@ const router = express.Router()
 const format = require('../model/schema')
 
 // get: all --> Select All using find()
-// url path: ../users/all
+// url syntax: ../users/all
 
 router.get('/all', async (req, res)=>{
     try{
@@ -16,14 +16,14 @@ router.get('/all', async (req, res)=>{
 })
 
 // get: one --> Select One using findOne()
-// url path: ../users/numberPlate
+// url syntax: ../users/numberPlate
 
 router.get('/:numberPlate', async (req, res)=>{
     try{
         const data = await format.findOne({numberPlate: req.params.numberPlate})
         if(data == null){
-            res.send("No such Data exists!")
-            console.log("No such Data exists!")
+            res.send("No such Vehicle exists!")
+            console.log("No such Vehicle exists!")
         }
         else{
             res.json(data)
@@ -34,7 +34,7 @@ router.get('/:numberPlate', async (req, res)=>{
 })
 
 // post: Insert one create(), validate(), save()
-// url path: 
+// url syntax: ../users
 
 router.post('/', async (req, res)=>{
 
@@ -63,9 +63,24 @@ router.post('/', async (req, res)=>{
 })
 
 // patch: Update using findOneAndUpdate()
-// url path:
+// url syntax: ../users/numberPlate
 
-// delete: Delete data usind remove()
-// url path:
+router.patch('/:numberPlate', async (req, res)=>{
+    try{
+        const statusData = await format.findOneAndUpdate({numberPlate: req.params.numberPlate}, req.body, {new: true})
+        if(!statusData){
+            res.send("No such Vehicle exists!")
+        }
+        else{
+            res.json(statusData)
+        }
+    }
+    catch(err){
+        console.log("Error: " + err)
+    }
+})
+
+// delete: Delete data usind deleteOne()
+// url syntax: ../users/
 
 module.exports = router

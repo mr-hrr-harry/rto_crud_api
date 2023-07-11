@@ -16,7 +16,8 @@ const Schema = new mongoose.Schema({
     finePending:{
         type: Boolean,
         required: true,
-    }
+        default: false,
+    },
 })
 
 module.exports = mongoose.model('RTO Vehicles data', Schema)
